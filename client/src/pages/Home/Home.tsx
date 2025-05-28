@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { fetchEntries, addEntry } from '../../api/entries';
+import '../../styles/Home.scss'
 
 interface Entry {
   _id: string;
@@ -15,23 +16,23 @@ export default function Home() {
 
   const token = localStorage.getItem('token');
 
-  useEffect(() => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate('/login');
+  //     return;
+  //   }
 
-    const fetchEntries = async () => {
-      try {
-        const res = await fetchEntries();
-        // setEntries(res.data.entries);
-      } catch (err) {
-        alert('שגיאה בטעינת נתונים');
-      }
-    };
+  //   const fetchEntries = async () => {
+  //     try {
+  //       const res = await fetchEntries();
+  //       // setEntries(res.data.entries);
+  //     } catch (err) {
+  //       alert('שגיאה בטעינת נתונים');
+  //     }
+  //   };
 
-    fetchEntries();
-  }, [token, navigate]);
+  //   fetchEntries();
+  // }, [token, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

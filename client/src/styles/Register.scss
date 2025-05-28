@@ -1,0 +1,62 @@
+@use '../styles/variables.scss' as *;
+
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $black;
+
+  .register-form {
+    background-color: rgba(255,255,255,0.3);
+    border: $border;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    width: 300px;
+
+    h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #007bff;
+      }
+    }
+  }
+}
