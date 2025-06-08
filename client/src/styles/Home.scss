@@ -1,20 +1,21 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #000;
   color: #fff;
   direction: rtl; // for right-to-left layout like Hebrew
 }
 
 .home-container {
-  max-width: 600px;
-  margin-right: auto;
-  margin-left: 0;
   padding: 2rem;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-h2, h3 {
+h2,
+h3 {
   margin-bottom: 1rem;
 }
 
@@ -55,5 +56,21 @@ ul {
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 4px;
+  }
+}
+.logout-btn {
+  background-color: #fff !important;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  font-size: 14px;
+  padding: 8px 8px;
+  margin-top: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
   }
 }

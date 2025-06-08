@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import "../../styles/Login.scss";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../api/auth";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
+    try {
+          await login( username, password);
+          navigate("/home");
+        } catch (error) {
+          console.log(error);
+        }
+    
     // Add login logic here
   };
 

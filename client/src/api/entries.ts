@@ -1,22 +1,20 @@
 import axios from 'axios';
+import type { ITransactionForm } from '../interfaces/transaction';
 
-const API_URL = 'http://localhost:5000';
-
-const getAuthHeader = () => {
-  const token = localStorage.getItem('token');
-  return {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-};
+const API_URL = 'http://localhost:5000/api/transactions';
 
 export const fetchEntries = async () => {
-  const res = await axios.get(`${API_URL}/entries`, getAuthHeader());
+  const res = await axios.get(`${API_URL}/entries`);
   return res.data.entries;
 };
 
-export const addEntry = async (amount: number) => {
-  const res = await axios.post(`${API_URL}/entry`, { amount }, getAuthHeader());
-  return res.data.newEntry;
+export const addEntry = async (formData:ITransactionForm) => {
+  try {
+    const res = await axios.post(`${API_URL}/`, formData, {
+      withCredentials: true
+    });
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
 };

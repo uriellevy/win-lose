@@ -2,10 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./users/routes";
-// import { mongooseConnect } from "./db/db";
+import transactionsRoutes from "./transactions/routes";
 import morgan from "morgan";
 import { mongooseConnect } from "./db/db";
-// import cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -21,9 +21,9 @@ app.use(
   })
 );
 app.use(morgan("dev"));
-// app.use(cookieParser());
+app.use(cookieParser());
 
-// app.use("/api/expenses", expenseRoutes);
+app.use("/api/transactions", transactionsRoutes);
 app.use("/api/users", userRoutes);
 
 app.listen(PORT, () =>
