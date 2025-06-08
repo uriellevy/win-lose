@@ -1,6 +1,6 @@
 export interface ITransactionForm {
   amount:number
-  type: TTransactionType
+  transactionType: TTransactionType
 }
 
 export type TTransactionType = "WIN" | "LOSE";

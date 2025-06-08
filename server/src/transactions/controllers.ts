@@ -5,11 +5,11 @@ import { Transaction } from "./schema";
 
 export const addTransaction = async (req: AuthRequest, res: Response) => {
   const userId = req.userId;
-  const {amount, type} = req.body;
+  const {amount, transactionType} = req.body;
   try {
      await Transaction.create({
       amount,
-      transactionType: type,
+      transactionType,
       userId,
     });
     res.status(201).json({message: "New Transaction Added"});
@@ -19,26 +19,14 @@ export const addTransaction = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// export const createExpense = async (req: AuthRequest, res: Response) => {
-//   const { title, category, amount, expenseType } = req.body;
-//   const userId = req.userId;
+export const getAllTransactions = async (req: AuthRequest, res: Response) => {
+  const userId = req.userId;
 
-//   try {
-//     const newExpense = await Expense.create({
-//       title,
-//       category,
-//       amount,
-//       expenseType,
-//       userId,
-//     });
-//     res
-//       .status(201)
-//       .json({
-//         message: "New expense created succeessfully",
-//         expense: newExpense,
-//       });
-//   } catch (error) {
-//     res.status(400).json({ message: error });
-//   }
-// };
-
+  try {
+    const list = await Transaction.find({userId: userId });
+    res.status(200).json({message:" All transactions recieved successfully",list})
+    
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+}

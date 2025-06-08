@@ -4,8 +4,10 @@ import type { ITransactionForm } from '../interfaces/transaction';
 const API_URL = 'http://localhost:5000/api/transactions';
 
 export const fetchEntries = async () => {
-  const res = await axios.get(`${API_URL}/entries`);
-  return res.data.entries;
+  const res = await axios.get(`${API_URL}`,{
+    withCredentials: true
+  });
+  return res.data;
 };
 
 export const addEntry = async (formData:ITransactionForm) => {
