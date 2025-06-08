@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { ITransactionForm } from '../interfaces/transaction';
 
-const API_URL = 'http://localhost:5000/api/transactions';
+const API_URL = `${import.meta.env.VITE_API_URL}transactions`;
 
 export const fetchEntries = async () => {
   const res = await axios.get(`${API_URL}`,{

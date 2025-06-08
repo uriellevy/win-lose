@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { IRegisterForm } from '../interfaces/users';
 
-const API_URL = 'http://localhost:5000/api/users';
+const API_URL = `${import.meta.env.VITE_API_URL}users`;
 
 export const register = async (formData:IRegisterForm) => {
   return await axios.post(`${API_URL}/register`, formData);
