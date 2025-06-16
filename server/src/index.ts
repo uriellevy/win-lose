@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174","https://win-lose-client-psi.vercel.app/"],
+    origin: ["http://localhost:5173", "http://localhost:5174","https://win-lose-client-psi.vercel.app"],
     credentials: true,
     methods:["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders:["Content-Type", "Authorization"]
@@ -27,7 +27,7 @@ app.use("/api/transactions", transactionsRoutes);
 app.use("/api/users", userRoutes);
 
 app.listen(PORT, () =>
-  console.log(`server is running on http://localhost:${PORT}`)
+  console.log(`server is running on dev http://localhost:${PORT}`)
 );
 
 mongooseConnect();
